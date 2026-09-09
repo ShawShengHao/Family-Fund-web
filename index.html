@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="澄衡資產精選基金組合：透明呈現績效、投資內容與風險資訊。" />
+    <title>澄衡資產｜精選基金組合</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="disclaimer.css" />
+    <link rel="stylesheet" href="chart-interactions.css" />
+    <link rel="stylesheet" href="formula.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="澄衡資產首頁"><span class="brand-mark">CH</span><span>澄衡資產</span></a>
+      <nav aria-label="主要導覽"><a href="#performance">績效表現</a><a href="#holdings">投資內容</a><a href="#insight">投資觀點</a></nav>
+      <button class="button button-dark header-action" data-open-modal>立即申購 <span aria-hidden="true">↗</span></button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow"><span></span>截至 2026 / 08 / 31 更新</div>
+        <p class="kicker">CRESCENT HARBOR · SELECTED STRATEGY</p>
+        <h1>讓每一筆投資，<br /><em>看得見方向。</em></h1>
+        <p class="hero-copy">以全球優質企業與趨勢成長為核心的多元基金組合。完整公開操作邏輯、資產配置與淨值變化，陪您穩健累積長期價值。</p>
+        <div class="hero-actions"><button class="button button-accent" data-open-modal>了解並申購 <span aria-hidden="true">↗</span></button><a class="text-link" href="#performance">查看完整績效 <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-note">投資有風險，基金投資有賺有賠，申購前應詳閱公開說明書。</div>
+      </section>
+
+      <section class="metrics" aria-label="關鍵數據">
+        <article><p>目前基金淨值</p><strong>112.47</strong><small>截至 2026 / 08 / 31</small></article>
+        <article><p>成立以來累積報酬</p><strong class="positive">+ 38.64<span>%</span></strong><small>成立日 2022 / 01 / 03</small></article>
+        <article><p>今年以來報酬</p><strong class="positive">+ 12.47<span>%</span></strong><small>Benchmark <b>+ 8.91%</b></small></article>
+        <article><p>投資人數</p><strong>1,248<span>人</span></strong><small>近三個月 + 186 人</small></article>
+      </section>
+
+      <section class="section performance" id="performance">
+        <div class="section-heading"><div><p class="kicker">01 / PERFORMANCE</p><h2>績效不是承諾，<br />而是透明的紀錄。</h2></div><p>以每月月底淨值計算，報酬率已扣除管理費用；過去績效不代表未來績效。</p></div>
+        <div class="performance-grid">
+          <div class="chart-card"><div class="chart-top"><div><p>近 90 日淨值走勢</p><strong>112.47</strong></div><span class="tag">近 90 日 +12.47%</span></div><div class="chart chart-interactive" aria-label="近90日淨值走勢折線圖"><svg viewBox="0 0 700 250" preserveAspectRatio="none" role="img"><path class="gridline" d="M0 45H700M0 105H700M0 165H700M0 225H700"/><path class="area" d="M0 182 C35 167,58 193,88 177 S131 147,162 163 S208 185,240 143 S278 119,310 139 S350 113,381 129 S416 166,448 148 S483 112,515 122 S551 95,583 110 S617 80,649 94 S676 53,700 66 V250 H0Z"/><path class="line" d="M0 182 C35 167,58 193,88 177 S131 147,162 163 S208 185,240 143 S278 119,310 139 S350 113,381 129 S416 166,448 148 S483 112,515 122 S551 95,583 110 S617 80,649 94 S676 53,700 66"/></svg><div class="chart-tooltip" role="status" aria-live="polite"></div><div class="chart-labels"><span>06 / 03</span><span>06 / 25</span><span>07 / 17</span><span>08 / 08</span><span>08 / 31</span></div></div></div>
+          <div class="return-card"><p class="kicker">報酬率摘要</p><dl><div><dt>近 1 個月</dt><dd class="positive">+ 2.16%</dd></div><div><dt>近 3 個月</dt><dd class="positive">+ 5.84%</dd></div><div><dt>近 1 年</dt><dd class="positive">+ 17.29%</dd></div><div><dt>波動度（年化）</dt><dd>14.8%</dd></div></dl><a href="#performance-formula" class="text-link">查看績效計算說明 <span>→</span></a></div>
+        </div>
+      </section>
+
+      <section class="section holdings" id="holdings">
+        <div class="section-heading"><div><p class="kicker">02 / PORTFOLIO</p><h2>投資什麼，<br />一目了然。</h2></div><p>採取「核心＋衛星」配置，兼顧全球大型品質股與長期結構性成長機會。</p></div>
+        <div class="allocation"><div class="donut allocation-interactive" aria-label="資產配置圖"><div><strong>100<span>%</span></strong><small>基金資產</small></div><div class="allocation-tooltip" role="status" aria-live="polite"></div></div><div class="allocation-list"><div><span class="dot dot-1"></span><p>全球股票型基金</p><strong>52%</strong></div><div><span class="dot dot-2"></span><p>科技與創新主題</p><strong>24%</strong></div><div><span class="dot dot-3"></span><p>收益與債券型基金</p><strong>16%</strong></div><div><span class="dot dot-4"></span><p>現金及其他</p><strong>8%</strong></div></div></div>
+        <div class="table-wrap"><table><thead><tr><th>主要投資標的</th><th>類型</th><th>比重</th><th>近一年報酬</th></tr></thead><tbody><tr><td><strong>全球優質企業基金</strong><span>核心持有</span></td><td>全球股票</td><td>18.4%</td><td class="positive">+21.6%</td></tr><tr><td><strong>美國創新成長基金</strong><span>衛星配置</span></td><td>美國股票</td><td>13.2%</td><td class="positive">+28.9%</td></tr><tr><td><strong>全球高收益債券基金</strong><span>收益部位</span></td><td>固定收益</td><td>11.6%</td><td class="positive">+8.2%</td></tr><tr><td><strong>亞洲成長機會基金</strong><span>衛星配置</span></td><td>亞洲股票</td><td>9.8%</td><td class="positive">+15.4%</td></tr></tbody></table><p class="table-note">以上為示範持倉與比例，實際投資內容將依市場情況調整。</p></div>
+      </section>
+
+      <section class="insight" id="insight"><div><p class="kicker">03 / SHORT-TERM STRATEGY</p><h2>掌握短線節奏，<br />靈活應對市場。</h2></div><p>聚焦價格動能、產業輪動與重要市場訊號，透過明確進出規則、停損紀律及部位控管，在變化快速的行情中尋找交易機會。</p><a class="button button-light" href="mailto:service@example.com?subject=索取短線策略月報">索取策略月報 <span>↗</span></a></section>
+
+      <section class="cta"><p class="kicker">START INVESTING</p><h2>準備好，開始累積<br />屬於你的長期價值。</h2><button class="button button-accent" data-open-modal>立即申購 <span>↗</span></button></section>
+    </main>
+    <section class="investment-disclaimer" id="notice" aria-labelledby="disclaimer-title">
+      <p class="kicker">IMPORTANT NOTICE</p>
+      <h2 id="disclaimer-title">基金投資聲明</h2>
+      <div class="disclaimer-grid">
+        <p>本網站所載之基金資訊、績效、資產配置與投資觀點，僅供一般資訊參考，不構成任何投資建議、要約、招攬或保證。網站中的圖表、數據及持倉內容可能因市場變動或投資調整而更新。</p>
+        <p>基金投資涉及風險，申購前請詳閱基金公開說明書、投資人須知及相關文件，並依自身財務狀況、投資經驗、風險承受度與投資目標審慎評估。過去績效不代表未來表現，基金淨值可能上漲或下跌，投資人可能損失部分或全部本金。</p>
+      </div>
+      <article class="formula-card" id="performance-formula" aria-labelledby="formula-title">
+        <div><p class="kicker">PERFORMANCE FORMULA</p><h3 id="formula-title">績效計算方式</h3></div>
+        <div class="formula" aria-label="績效等於當前基金總價值減去基金初始本金">
+          <span>當前基金總價值<br /><small>含未實現損益</small></span><b>−</b><span>基金初始本金</span><b>=</b><strong>目前獲利／虧損</strong>
+        </div>
+      </article>
+      <p class="disclaimer-emphasis">本頁面所示資料為網站展示用途；正式投資資訊應以基金管理機構或合法銷售機構提供的最新文件為準。</p>
+    </section>
+    <footer><div class="brand"><span class="brand-mark">CH</span><span>澄衡資產</span></div><p>本網站資料僅供參考，不構成任何投資建議或招攬。基金投資涉及風險，過去績效不代表未來表現。</p><small>© 2026 Crescent Harbor Asset Management. Demo website.</small></footer>
+
+    <dialog id="subscription-dialog"><form method="dialog" class="dialog-card"><button class="close" type="submit" formnovalidate aria-label="關閉" value="cancel">×</button><p class="kicker">開始申購</p><h2>先認識您的需求</h2><p>留下聯絡方式，我們的理財顧問會協助您了解適合的基金與正式申購流程。</p><label>姓名<input required name="name" placeholder="您的姓名" /></label><label>電子信箱<input required type="email" name="email" placeholder="name@example.com" /></label><label>預計投資金額（新臺幣）<input required type="number" name="amount" min="0" step="1" inputmode="numeric" placeholder="請輸入金額，例如：100000" /></label><button class="button button-accent submit" value="submit">送出諮詢申請 <span>↗</span></button><small>送出即表示您同意由專人聯絡；此表單為展示用途，尚未傳送資料。</small></form></dialog>
+    <script src="public-sync.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+.investment-disclaimer {
+  padding: 68px 6.2vw;
+  background: #e5eee7;
+  border-top: 1px solid #cbd8cc;
+}
+
+.investment-disclaimer .kicker { margin-top: 0; }
+.investment-disclaimer h2 { margin: 0 0 28px; font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -.05em; }
+.disclaimer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; max-width: 1000px; }
+.disclaimer-grid p { margin: 0; color: #43534b; font-size: 13px; line-height: 2; }
+.disclaimer-emphasis { max-width: 1000px; margin: 28px 0 0; padding-top: 20px; border-top: 1px solid #bdd0c2; color: #1e735f; font-size: 12px; font-weight: 600; line-height: 1.8; }
+
+@media (max-width: 720px) {
+  .investment-disclaimer { padding: 52px 5vw; }
+  .disclaimer-grid { grid-template-columns: 1fr; gap: 18px; }
+}
