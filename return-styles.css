@@ -1,0 +1,6 @@
+.negative { color: #c63d32; }
+.return-value { font-weight: 700; }
+.metrics .return-value, .return-card dd.return-value { font-weight: 700; }
+.metrics .negative, .chart-tooltip .negative { color: #ff8e7c; }
+.return-card dd.negative { color: #c63d32; }
+.chart-tooltip b.return-value { font-weight: 700; }

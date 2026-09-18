@@ -1,1 +1,37 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>基金資料更新｜後臺</title><link rel="stylesheet" href="admin.css"></head><body><aside><a class="brand" href="index.html"><i>CH</i>澄衡資產</a><p>管理後臺</p><nav><a class="active" href="admin.html">基金資料更新</a><a href="history.html">歷史紀錄管理</a><a href="index.html" target="_blank">查看公開網站 ↗</a></nav></aside><main id="overview"><header><div><p class="eyebrow">FUND OPERATIONS</p><h1>每日基金更新</h1><p>金額欄位會自動加上千分位逗號。</p></div><button form="fund-form" class="save">儲存並更新公開頁面 ↗</button></header><form id="fund-form"><section><div class="section-title"><span>01</span><div><h2>淨值與報酬</h2></div></div><div class="grid"><label>資料更新日期<input name="updatedAt" type="date" required></label><label>目前基金淨值<input name="nav" type="number" step="0.01" required></label><label>本金<input class="money" name="principal" inputmode="decimal" required></label><label>年初基金淨值<input name="yearStartNav" type="number" step="0.01" required></label><label>90 日前基金淨值<input name="nav90" type="number" step="0.01" required></label><label>基金初始淨值<input name="initialNav" type="number" step="0.01" required></label><label>投資人數<input name="investors" type="number" required></label></div><div class="calculated"><div>目前現金：<strong id="cash-output">—</strong></div><div>持股總價值：<strong id="stock-output">—</strong></div><div>今年以來報酬：<strong id="ytd-output">—</strong></div><div>近 90 日報酬：<strong id="return90-output">—</strong></div><div>成立以來累積報酬：<strong id="total-output">—</strong></div></div></section><section><div class="section-title"><span>02</span><div><h2>主要投資內容</h2><p>持股比例依投資成本自動計算。</p></div></div><div class="holding headers"><span>投資標的</span><span>類型</span><span>投資成本</span><span>目前價值</span><span>持股比例</span><span></span></div><div id="holdings"></div><button type="button" class="add" id="add-holding">＋ 新增投資標的</button></section></form></main><template id="holding-template"><div class="holding"><input name="holdingName" placeholder="投資標的" required><select name="holdingType"><option>股票</option><option>權證</option><option>債券</option><option>基金</option><option>現金</option><option>其他</option></select><input class="money" name="holdingCost" inputmode="decimal" placeholder="投資成本" required><input class="money" name="holdingValue" inputmode="decimal" placeholder="目前價值" required><output class="weight">—</output><button type="button">×</button></div></template><script src="admin.js"></script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>基金資料更新｜後臺</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="stock-lookup.css">
+</head>
+<body>
+  <aside>
+    <a class="brand" href="index.html"><i>CH</i>澄衡資產</a>
+    <p>管理後臺</p>
+    <nav><a class="active" href="admin.html">基金資料更新</a><a href="history.html">歷史紀錄管理</a><a href="index.html" target="_blank">查看公開網站 ↗</a></nav>
+  </aside>
+  <main id="overview">
+    <header><div><p class="eyebrow">FUND OPERATIONS</p><h1>每日基金更新</h1><p>金額欄位會自動加上千分位逗號。</p></div><div class="header-actions"><button type="button" class="refresh" id="refresh-holdings">刷新持股價值 ↻</button><button form="fund-form" class="save">儲存並更新公開頁面 ↗</button></div></header>
+    <form id="fund-form">
+      <section>
+        <div class="section-title"><span>01</span><div><h2>淨值與報酬</h2></div></div>
+        <div class="grid">
+          <label>資料更新日期<input name="updatedAt" type="date" required></label><label>目前基金淨值<input name="nav" type="number" step="0.01" required></label><label>本金<input class="money" name="principal" inputmode="decimal" required></label><label>年初基金淨值<input name="yearStartNav" type="number" step="0.01" required></label><label>90 日前基金淨值<input name="nav90" type="number" step="0.01" required></label><label>基金初始淨值<input name="initialNav" type="number" step="0.01" required></label><label>投資人數<input name="investors" type="number" required></label>
+        </div>
+        <div class="calculated"><div>目前現金：<strong id="cash-output">—</strong></div><div>持股總價值：<strong id="stock-output">—</strong></div><div>今年以來報酬：<strong id="ytd-output">—</strong></div><div>近 90 日報酬：<strong id="return90-output">—</strong></div><div>成立以來累積報酬：<strong id="total-output">—</strong></div></div>
+      </section>
+      <section>
+        <div class="section-title"><span>02</span><div><h2>主要投資內容</h2><p>持股比例依投資成本自動計算。輸入股票代號後移開欄位，可自動查詢名稱；需要更新時再手動刷新持股價值。</p></div></div>
+        <div class="holding headers"><span>投資標的</span><span>類型</span><span>投資成本</span><span>股數</span><span>目前價值</span><span>持股比例</span><span></span></div>
+        <div id="holdings"></div><button type="button" class="add" id="add-holding">＋ 新增投資標的</button>
+      </section>
+    </form>
+  </main>
+  <template id="holding-template"><div class="holding"><input name="holdingName" placeholder="投資標的或股票代號" required><select name="holdingType"><option>股票</option><option>權證</option><option>債券</option><option>基金</option><option>現金</option><option>其他</option></select><input class="money" name="holdingCost" inputmode="decimal" placeholder="投資成本" required><input name="holdingQuantity" type="number" min="0" step="any" inputmode="decimal" placeholder="股數"><input class="money" name="holdingValue" inputmode="decimal" placeholder="目前價值" required><output class="weight">—</output><button type="button">×</button></div></template>
+  <script src="admin.js"></script>
+  <script src="stock-lookup.js"></script>
+</body>
+</html>

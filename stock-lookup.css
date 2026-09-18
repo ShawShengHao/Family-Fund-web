@@ -1,0 +1,7 @@
+.header-actions { display: flex; gap: 12px; align-items: center; }
+.refresh { border: 1px solid #b3cfba; background: #f2f8f3; color: var(--green); padding: 13px 15px; font-weight: 700; cursor: pointer; }
+.refresh:disabled { opacity: .65; cursor: wait; }
+.holding { position: relative; grid-template-columns: 2fr 1fr 1.1fr 1fr 1.25fr 1fr 38px; }
+.stock-lookup-result { grid-column: 1 / 2; min-height: 16px; margin-top: -4px; color: var(--green); font-size: 11px; font-weight: 700; }
+.stock-lookup-result.is-error { color: #b84727; font-weight: 500; }
+@media(max-width:850px) { .header-actions { margin-top: 18px; flex-wrap: wrap; } .holding { grid-template-columns: 1fr 1fr; } }

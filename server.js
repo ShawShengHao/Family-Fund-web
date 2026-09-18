@@ -9,6 +9,49 @@ db.exec('CREATE TABLE IF NOT EXISTS fund_snapshots (id INTEGER PRIMARY KEY, save
 
 const send = (res, status, body, type = 'application/json; charset=utf-8') => { res.writeHead(status, { 'Content-Type': type }); res.end(body); };
 http.createServer((req, res) => {
+  const requestUrl = new URL(req.url, 'http://localhost');
+  if (requestUrl.pathname === '/api/stock-lookup' && req.method === 'GET') {
+    const input = (requestUrl.searchParams.get('symbol') || '').trim().toUpperCase();
+    if (!/^[A-Z0-9.-]{1,15}$/.test(input)) return send(res, 400, '{"ok":false,"message":"Invalid symbol"}');
+    const symbols = /^\d+$/.test(input) ? [`${input}.TW`, `${input}.TWO`, input] : [input];
+    (async () => {
+      try {
+        for (const symbol of symbols) {
+          const url = `https://query1.finance.yahoo.com/v1/finance/search?q=${encodeURIComponent(symbol)}&quotesCount=10&newsCount=0`;
+          const result = await fetch(url, { headers: { 'User-Agent': 'fund-investment-site/1.0' } });
+          if (!result.ok) continue;
+          const payload = await result.json();
+          const quote = (payload.quotes || []).find(item => item.symbol === symbol) || (payload.quotes || [])[0];
+          if (quote?.shortname || quote?.longname || quote?.displayName) {
+            return send(res, 200, JSON.stringify({ ok: true, symbol: quote.symbol, name: quote.longname || quote.shortname || quote.displayName }));
+          }
+        }
+        send(res, 404, '{"ok":false,"message":"Not found"}');
+      } catch {
+        send(res, 502, '{"ok":false,"message":"Lookup unavailable"}');
+      }
+    })();
+    return;
+  }
+  if (requestUrl.pathname === '/api/stock-price' && req.method === 'GET') {
+    const symbol = (requestUrl.searchParams.get('symbol') || '').trim().toUpperCase();
+    if (!/^[A-Z0-9.-]{1,20}$/.test(symbol)) return send(res, 400, '{"ok":false,"message":"Invalid symbol"}');
+    (async () => {
+      try {
+        const result = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=5d&interval=1d`, { headers: { 'User-Agent': 'fund-investment-site/1.0' } });
+        if (!result.ok) return send(res, 502, '{"ok":false,"message":"Price lookup unavailable"}');
+        const chart = await result.json();
+        const data = chart.chart?.result?.[0];
+        const closes = data?.indicators?.quote?.[0]?.close || [];
+        const index = closes.map((value, i) => value == null ? -1 : i).filter(i => i >= 0).at(-1);
+        if (index === undefined) return send(res, 404, '{"ok":false,"message":"Closing price not found"}');
+        send(res, 200, JSON.stringify({ ok: true, symbol: data.meta.symbol, price: closes[index], currency: data.meta.currency, closedAt: new Date(data.timestamp[index] * 1000).toISOString().slice(0, 10) }));
+      } catch {
+        send(res, 502, '{"ok":false,"message":"Price lookup unavailable"}');
+      }
+    })();
+    return;
+  }
   const snapshotMatch = req.url.match(/^\/api\/snapshots\/(\d+)$/);
   if (snapshotMatch && req.method === 'PUT') {
     let raw = ''; req.on('data', chunk => raw += chunk); req.on('end', () => {

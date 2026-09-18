@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="disclaimer.css" />
     <link rel="stylesheet" href="chart-interactions.css" />
+    <link rel="stylesheet" href="return-styles.css" />
     <link rel="stylesheet" href="formula.css" />
+    <style>
+      .hero h1 {
+        letter-spacing: 0.06em;
+      }
+    </style>
   </head>
   <body>
     <header class="topbar">
@@ -24,16 +30,16 @@
       <section class="hero">
         <div class="eyebrow"><span></span>截至 2026 / 08 / 31 更新</div>
         <p class="kicker">CRESCENT HARBOR · SELECTED STRATEGY</p>
-        <h1>讓每一筆投資，<br /><em>看得見方向。</em></h1>
-        <p class="hero-copy">以全球優質企業與趨勢成長為核心的多元基金組合。完整公開操作邏輯、資產配置與淨值變化，陪您穩健累積長期價值。</p>
+        <h1>HOW雲霄飛車策略基金</h1>
+        <p class="hero-copy">以抓住任何短暫波動機會為核心的多元基金組合。完整公開操作邏輯、資產配置與淨值變化，陪您穩健累積長期價值。</p>
         <div class="hero-actions"><button class="button button-accent" data-open-modal>了解並申購 <span aria-hidden="true">↗</span></button><a class="text-link" href="#performance">查看完整績效 <span aria-hidden="true">↓</span></a></div>
         <div class="hero-note">投資有風險，基金投資有賺有賠，申購前應詳閱公開說明書。</div>
       </section>
 
       <section class="metrics" aria-label="關鍵數據">
         <article><p>目前基金淨值</p><strong>112.47</strong><small>截至 2026 / 08 / 31</small></article>
-        <article><p>成立以來累積報酬</p><strong class="positive">+ 38.64<span>%</span></strong><small>成立日 2022 / 01 / 03</small></article>
-        <article><p>今年以來報酬</p><strong class="positive">+ 12.47<span>%</span></strong><small>Benchmark <b>+ 8.91%</b></small></article>
+        <article><p>成立以來累積報酬</p><strong class="positive return-value">+ 38.64<span>%</span></strong><small>成立日 2022 / 01 / 03</small></article>
+        <article><p>今年以來報酬</p><strong class="positive return-value">+ 12.47<span>%</span></strong><small>Benchmark <b>+ 8.91%</b></small></article>
         <article><p>投資人數</p><strong>1,248<span>人</span></strong><small>近三個月 + 186 人</small></article>
       </section>
 
@@ -41,7 +47,7 @@
         <div class="section-heading"><div><p class="kicker">01 / PERFORMANCE</p><h2>績效不是承諾，<br />而是透明的紀錄。</h2></div><p>以每月月底淨值計算，報酬率已扣除管理費用；過去績效不代表未來績效。</p></div>
         <div class="performance-grid">
           <div class="chart-card"><div class="chart-top"><div><p>近 90 日淨值走勢</p><strong>112.47</strong></div><span class="tag">近 90 日 +12.47%</span></div><div class="chart chart-interactive" aria-label="近90日淨值走勢折線圖"><svg viewBox="0 0 700 250" preserveAspectRatio="none" role="img"><path class="gridline" d="M0 45H700M0 105H700M0 165H700M0 225H700"/><path class="area" d="M0 182 C35 167,58 193,88 177 S131 147,162 163 S208 185,240 143 S278 119,310 139 S350 113,381 129 S416 166,448 148 S483 112,515 122 S551 95,583 110 S617 80,649 94 S676 53,700 66 V250 H0Z"/><path class="line" d="M0 182 C35 167,58 193,88 177 S131 147,162 163 S208 185,240 143 S278 119,310 139 S350 113,381 129 S416 166,448 148 S483 112,515 122 S551 95,583 110 S617 80,649 94 S676 53,700 66"/></svg><div class="chart-tooltip" role="status" aria-live="polite"></div><div class="chart-labels"><span>06 / 03</span><span>06 / 25</span><span>07 / 17</span><span>08 / 08</span><span>08 / 31</span></div></div></div>
-          <div class="return-card"><p class="kicker">報酬率摘要</p><dl><div><dt>近 1 個月</dt><dd class="positive">+ 2.16%</dd></div><div><dt>近 3 個月</dt><dd class="positive">+ 5.84%</dd></div><div><dt>近 1 年</dt><dd class="positive">+ 17.29%</dd></div><div><dt>波動度（年化）</dt><dd>14.8%</dd></div></dl><a href="#performance-formula" class="text-link">查看績效計算說明 <span>→</span></a></div>
+          <div class="return-card"><p class="kicker">報酬率摘要</p><dl><div><dt>近 1 個月</dt><dd class="positive return-value">+ 2.16%</dd></div><div><dt>近 3 個月</dt><dd class="positive return-value">+ 5.84%</dd></div><div><dt>近 1 年</dt><dd class="positive return-value">+ 17.29%</dd></div><div><dt>波動度（年化）</dt><dd>14.8%</dd></div></dl><a href="#performance-formula" class="text-link">查看績效計算說明 <span>→</span></a></div>
         </div>
       </section>
 
@@ -74,6 +80,7 @@
 
     <dialog id="subscription-dialog"><form method="dialog" class="dialog-card"><button class="close" type="submit" formnovalidate aria-label="關閉" value="cancel">×</button><p class="kicker">開始申購</p><h2>先認識您的需求</h2><p>留下聯絡方式，我們的理財顧問會協助您了解適合的基金與正式申購流程。</p><label>姓名<input required name="name" placeholder="您的姓名" /></label><label>電子信箱<input required type="email" name="email" placeholder="name@example.com" /></label><label>預計投資金額（新臺幣）<input required type="number" name="amount" min="0" step="1" inputmode="numeric" placeholder="請輸入金額，例如：100000" /></label><button class="button button-accent submit" value="submit">送出諮詢申請 <span>↗</span></button><small>送出即表示您同意由專人聯絡；此表單為展示用途，尚未傳送資料。</small></form></dialog>
     <script src="public-sync.js"></script>
+    <script src="return-enhancements.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
